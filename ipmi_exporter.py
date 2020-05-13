@@ -50,8 +50,11 @@ class IpmiCollector(object):
             'system_temp': GaugeMetricFamily('ipmi_system_temp', 'System temp', labels=['ip']),
             'peripheral_temp': GaugeMetricFamily('ipmi_peripheral_temp', 'Peripheral temp', labels=['ip']),
             '10g_temp': GaugeMetricFamily('ipmi_10g_temp', '10G temp', labels=['ip']),
-	    'ram_temp': GaugeMetricFamily('ipmi_ram_temp', 'RAM temp', labels=['ip']),
-            'fan_speed': GaugeMetricFamily('ipmi_fan_speed', 'Fan speed', labels=['ip']),
+            'ram_temp': GaugeMetricFamily('ipmi_ram_temp', 'RAM temp', labels=['ip']),
+            'fan1_speed': GaugeMetricFamily('ipmi_fan_speed', 'Fan1 speed', labels=['ip']),
+            'fan2_speed': GaugeMetricFamily('ipmi_fan_speed', 'Fan2 speed', labels=['ip']),
+            'fan3_speed': GaugeMetricFamily('ipmi_fan_speed', 'Fan3 speed', labels=['ip']),
+            'fan4_speed': GaugeMetricFamily('ipmi_fan_speed', 'Fan4 speed', labels=['ip']),
             'volt': GaugeMetricFamily('ipmi_volt', 'Volt', labels=['ip'])
         }
         raw = Manager().list([])
@@ -73,12 +76,18 @@ class IpmiCollector(object):
                             sys_metrics['system_temp'].add_metric([ip], value)
                         elif 'Peripheral' in k:
                             sys_metrics['peripheral_temp'].add_metric([ip], value)
-			elif 'MB_10G' in k:
+                        elif 'MB_10G' in k:
                             sys_metrics['10g_temp'].add_metric([ip], value)
-			elif 'DIMMA1' in k:
+                        elif 'DIMMA1' in k:
                             sys_metrics['ram_temp'].add_metric([ip], value)
-                        elif 'FAN' in k:
-                            sys_metrics['fan_speed'].add_metric([ip], value)
+                        elif 'FAN1' in k:
+                            sys_metrics['fan1_speed'].add_metric([ip], value)
+                        elif 'FAN2' in k:
+                            sys_metrics['fan2_speed'].add_metric([ip], value)
+                        elif 'FAN3' in k:
+                            sys_metrics['fan3_speed'].add_metric([ip], value)
+                        elif 'FAN4' in k:
+                            sys_metrics['fan4_speed'].add_metric([ip], value)
                         else:
                             logging.error("Undefined metric: %s", k)
 
