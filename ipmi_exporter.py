@@ -51,10 +51,10 @@ class IpmiCollector(object):
             'peripheral_temp': GaugeMetricFamily('ipmi_peripheral_temp', 'Peripheral temp', labels=['ip']),
             '10g_temp': GaugeMetricFamily('ipmi_10g_temp', '10G temp', labels=['ip']),
             'ram_temp': GaugeMetricFamily('ipmi_ram_temp', 'RAM temp', labels=['ip']),
-            'fan1_speed': GaugeMetricFamily('ipmi_fan_speed', 'Fan1 speed', labels=['ip']),
-            'fan2_speed': GaugeMetricFamily('ipmi_fan_speed', 'Fan2 speed', labels=['ip']),
-            'fan3_speed': GaugeMetricFamily('ipmi_fan_speed', 'Fan3 speed', labels=['ip']),
-            'fan4_speed': GaugeMetricFamily('ipmi_fan_speed', 'Fan4 speed', labels=['ip']),
+            'fan1_speed': GaugeMetricFamily('ipmi_fan1_speed', 'Fan1 speed', labels=['ip']),
+            'fan2_speed': GaugeMetricFamily('ipmi_fan2_speed', 'Fan2 speed', labels=['ip']),
+            'fan3_speed': GaugeMetricFamily('ipmi_fan3_speed', 'Fan3 speed', labels=['ip']),
+            'fan4_speed': GaugeMetricFamily('ipmi_fan4_speed', 'Fan4 speed', labels=['ip']),
             'volt': GaugeMetricFamily('ipmi_volt', 'Volt', labels=['ip'])
         }
         raw = Manager().list([])
